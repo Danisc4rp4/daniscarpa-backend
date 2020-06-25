@@ -1,7 +1,3 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/daniscarpa/backend', '.' ]
-
-images:
-- 'gcr.io/$PROJECT_ID/$REPO_NAME:$BRANCH_NAME-$SHORT_SHA'
-- 'gcr.io/$PROJECT_ID/$REPO_NAME:latest'
