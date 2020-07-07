@@ -22,4 +22,6 @@ ma = Marshmallow(app)
 def get_current_time():
     return {'time': time.time()}
 
+import resources.UserRegistrationResource
+import resources.UserLoginResource
 import resources.UserResource
