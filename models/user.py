@@ -3,6 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from api.api import db, app
 import datetime
 import jwt
+import os
 
 from models.blacklist import BlacklistToken
 
@@ -39,9 +40,10 @@ class User(db.Model):
             }
             return jwt.encode(
                 payload,
-                app.config.get('SECRET_KEY'),
+                os.environ['SECRET_KEY'],
                 algorithm='HS256'
             )
+            # app.config.get('SECRET_KEY'),
         except Exception as e:
             return e
 
@@ -53,7 +55,7 @@ class User(db.Model):
         :return: integer|string
         """
         try:
-            payload = jwt.decode(auth_token, app.config.get('SECRET_KEY'))
+            payload = jwt.decode(auth_token, os.environ['SECRET_KEY'])
             is_blacklisted_token = BlacklistToken.check_blacklist(auth_token)
             if is_blacklisted_token:
                 return 'Token blacklisted. Please log in again.'
