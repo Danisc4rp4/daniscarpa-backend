@@ -41,18 +41,18 @@ class UserRegistrationResource(Resource):
                     'message': 'Successfully registered.',
                     'auth_token': auth_token.decode()
                 }
-                return make_response(jsonify(responseObject)), 201
+                return make_response(jsonify(responseObject), 201)
             except Exception as e:
                 responseObject = {
                     'status': 'fail',
                     'message': 'Some error occurred. Please try again.'
                 }
-                return make_response(jsonify(responseObject)), 401
+                return make_response(jsonify(responseObject), 401)
         else:
             responseObject = {
                 'status': 'fail',
                 'message': 'User already exists. Please Log in.',
             }
-            return make_response(jsonify(responseObject)), 202
+            return make_response(jsonify(responseObject), 202)
 
 api.add_resource(UserRegistrationResource, '/auth/register')

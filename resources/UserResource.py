@@ -33,13 +33,13 @@ class UserResource(Resource):
                 'status': 'fail',
                 'message': resp
             }
-            return make_response(jsonify(responseObject)), 401
+            return make_response(jsonify(responseObject), 401)
         else:
             responseObject = {
                 'status': 'fail',
                 'message': 'Provide a valid auth token.'
             }
-            return make_response(jsonify(responseObject)), 401
+            return make_response(jsonify(responseObject), 401)
 
 api.add_resource(UserResource, '/users')
 
