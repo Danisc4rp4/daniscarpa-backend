@@ -19,6 +19,8 @@ MarkupSafe==1.1.1
 marshmallow==3.6.1
 marshmallow-sqlalchemy==0.23.1
 mccabe==0.6.1
+prometheus-client==0.8.0
+prometheus-flask-exporter==0.15.4
 psycopg2==2.8.5
 pycparser==2.20
 PyJWT==1.7.1

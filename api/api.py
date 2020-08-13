@@ -4,11 +4,15 @@ from flask_restful import Api
 from flask_marshmallow import Marshmallow
 import time
 import os
+from prometheus_flask_exporter import PrometheusMetrics
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+metrics = PrometheusMetrics(app)
+
+metrics.info('app_info', 'Application info', version='1.0.0')
 
 import models.user
 
